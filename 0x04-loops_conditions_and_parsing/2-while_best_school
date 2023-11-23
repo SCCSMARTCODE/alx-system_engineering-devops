@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+y=0
+while [ $y -lt 10 ]
+do
+  echo "Best School"
+  y=$((y + 1))
+done

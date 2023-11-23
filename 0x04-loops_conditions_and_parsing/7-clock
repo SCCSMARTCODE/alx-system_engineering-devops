@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+x=0
+
+while [ $x -ne 13 ]
+do
+echo "Hour: $x"
+y=1
+
+  while [ $y -ne 60 ]
+  do
+    echo $y
+    y=$((y + 1))
+  done
+  x=$((x + 1))
+done
