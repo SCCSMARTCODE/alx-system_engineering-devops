@@ -5,11 +5,10 @@
 y=0
 while [ $y -lt 10 ]
 do
+  echo "Best School"
   if [ $y -eq 8 ]
     then
       echo "Hi"
-  else
-    echo "Best School"
   fi
   y=$((y + 1))
 done
