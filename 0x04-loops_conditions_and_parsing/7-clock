@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# this script prints `Best School` 20 times using while loop
+# with some conditioal difference
+
+
 x=0
 
 while [ $x -ne 13 ]

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# this script prints `Best School` 10 times using while loop
+#with some conditioal difference involving case
+
 
 count=1
 while [ $count -le 20 ]
