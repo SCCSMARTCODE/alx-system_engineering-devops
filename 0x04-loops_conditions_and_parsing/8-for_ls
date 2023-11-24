@@ -2,9 +2,8 @@
 # this script prints
 # with some conditioal difference
 
-for file in *; do
-  if [ -f "$file" ] && [[ $file == *-* ]]; then
-    name=${file#*-}
-    echo "$name"
-  fi
+totallist=$(ls)
+
+for i in $totallist; do
+  echo "$i" | cut -d '-' -f2
 done
