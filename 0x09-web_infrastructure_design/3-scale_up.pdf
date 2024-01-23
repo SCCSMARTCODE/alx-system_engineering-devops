@@ -1,0 +1,49 @@
+1. **Web Servers (Nginx):**
+   - Role: Handles HTTP/HTTPS requests, serves static and dynamic content.
+   - **Why**: Separating web serving from application logic for scalability and maintainability. Distributing the load improves performance.
+
+2. **Application Servers:**
+   - Role: Executes application logic, processes dynamic content.
+   - **Why**: Isolating application processing for easier scaling and maintenance. Allows independent scaling of web and app tiers.
+
+3. **Database (MySQL - Master-Slave Cluster):**
+   - Role: Stores and manages application data.
+   - **Why**: Centralized data storage, supports structured queries, and provides fault tolerance through clustering.
+
+4. **Load Balancers (HAProxy - Clustered):**
+   - Role: Distributes incoming traffic among web servers.
+   - **Why**: Improves availability and scalability. Clustering ensures redundancy and high availability. Distributing the load across multiple load balancers enhances reliability.
+
+5. **Firewalls:**
+   - Role: Control incoming and outgoing network traffic.
+   - **Why**: Adds an extra layer of security, prevents unauthorized access.
+
+6. **SSL Certificate:**
+   - Role: Encrypts data transmitted between users and the web servers.
+   - **Why**: Ensures secure communication and protects user data.
+
+7. **Monitoring Clients (Sumologic or other services):**
+   - Role: Collects and sends performance data to monitoring services.
+   - **Why**: Provides insights into system health, identifies issues proactively.
+
+8. **Additional Server:**
+   - Role: Dedicated server for additional components or services.
+   - **Why**: Allows flexibility for future expansions, additional services, or experiments without impacting existing infrastructure.
+
+### Explanation of Specifics:
+
+- **Clustered Load Balancers (HAProxy):**
+  - Ensures high availability by distributing incoming traffic across multiple load balancers.
+  - Offers redundancy, minimizing the risk of a single point of failure.
+
+- **Additional Server:**
+  - Provides flexibility for scaling or adding new services.
+  - Ensures the separation of concerns by dedicating a server for specific functions.
+
+### Issues with the Infrastructure:
+
+- **Uniform Components Across Servers:**
+  - Issue: Uniformity can lead to a single point of failure.
+  - Mitigation: Introduce diversity in server components and distribute services across different availability zones or regions.
+
+This updated design enhances the infrastructure's scalability, availability, and flexibility by introducing clustering for load balancing and dedicating a server for additional services or future expansion.
