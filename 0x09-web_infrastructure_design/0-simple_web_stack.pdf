@@ -1,0 +1,61 @@
+Server:
+
+A physical or virtual machine running Linux (e.g., Ubuntu).
+Domain Name:
+
+A domain name (e.g., foobar.com) is a human-readable address that points to the server's IP address.
+The www subdomain (www.foobar.com) is commonly used to denote the web server.
+DNS Record:
+
+A DNS (Domain Name System) record is configured for www.foobar.com to point to the server's IP address (e.g., 8.8.8.8).
+The www DNS record is of type 'A' (Address record) and resolves the domain to an IPv4 address.
+Web Server (Nginx):
+
+Nginx is installed on the server and acts as a web server.
+It handles incoming HTTP requests and serves static content.
+Application Server:
+
+The application server, such as PHP-FPM, is installed to execute dynamic content.
+It handles requests for dynamic pages, processes PHP code, and communicates with the web server.
+Application Files (Code Base):
+
+The website's codebase (HTML, PHP, etc.) is stored on the server.
+This includes the logic, functionality, and presentation of the website.
+Database (MySQL):
+
+MySQL is installed as the database management system.
+It stores and manages the website's data, such as user accounts, posts, etc.
+Explanation:
+
+What is a Server?
+
+A server is a computer or system that provides services to other computers or clients over a network.
+Role of the Domain Name:
+
+A domain name is a human-readable label that maps to an IP address. It makes it easier for users to access websites without remembering numeric IP addresses.
+Type of DNS Record 'www' in www.foobar.com:
+
+The 'www' DNS record is of type 'A' (Address record), pointing to the server's IP address.
+Role of the Web Server (Nginx):
+
+The web server (Nginx) handles HTTP requests, serves static content, and forwards dynamic content requests to the application server.
+Role of the Application Server:
+
+The application server executes dynamic content (e.g., PHP code) and communicates with the web server to generate dynamic pages.
+Role of the Database (MySQL):
+
+The database (MySQL) stores and manages the website's data, providing a backend for the application server.
+Communication with the User's Computer:
+
+Communication with the user's computer is done over the HTTP/HTTPS protocol. The web server responds to user requests, serving static content and forwarding dynamic content requests to the application server.
+Issues with this Infrastructure:
+
+Single Point of Failure (SPOF):
+
+The entire infrastructure relies on a single server, making it vulnerable to failures. If the server goes down, the entire website becomes inaccessible.
+Downtime during Maintenance:
+
+Deploying new code or performing maintenance may require restarting the web server, leading to downtime during the process.
+Scalability Issues:
+
+As the website grows and traffic increases, a single server may not handle the load efficiently. Scaling the infrastructure horizontally becomes challenging.
