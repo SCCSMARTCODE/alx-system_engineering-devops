@@ -1,0 +1,80 @@
+Certainly! Let's design a three-server web infrastructure for www.foobar.com with security, encrypted traffic, and monitoring:
+
+### Infrastructure Design:
+
+1. **Web Servers (Nginx):**
+   - Role: Handles HTTP/HTTPS requests, serves static and dynamic content.
+   - **Why**: To provide web services, support HTTPS, and ensure redundancy.
+
+2. **Application Servers:**
+   - Role: Executes application logic, processes dynamic content.
+   - **Why**: Separates application processing from web serving for scalability and maintainability.
+
+3. **Load Balancer (HAproxy):**
+   - Role: Distributes incoming traffic among web servers.
+   - **Why**: Ensures high availability, load balancing, and scalability.
+   - **SSL Termination**: Decrypts SSL traffic before forwarding requests to web servers.
+
+4. **Firewalls:**
+   - Role: Control incoming and outgoing network traffic.
+   - **Why**: Adds an extra layer of security, prevents unauthorized access.
+   - **Placement**: One firewall before the load balancer, one between load balancer and web servers, and one before the database.
+
+5. **Database (MySQL - Master-Slave Cluster):**
+   - Role: Stores and manages application data.
+   - **Why**: Centralized data storage, supports structured queries.
+   - **Issue Resolution**: Configured as a master-slave cluster for fault tolerance.
+
+6. **SSL Certificate:**
+   - Role: Encrypts data transmitted between users and the web servers.
+   - **Why**: Ensures secure communication and protects user data.
+   - **Termination**: SSL termination at the load balancer level for simplified certificate management.
+
+7. **Monitoring Clients (Sumologic or other services):**
+   - Role: Collects and sends performance data to monitoring services.
+   - **Why**: Provides insights into system health, identifies issues proactively.
+
+### Explanation of Specifics:
+
+- **Firewalls:**
+  - Control incoming and outgoing traffic to prevent unauthorized access.
+  - Add an extra layer of security to protect the infrastructure.
+
+- **SSL Termination at Load Balancer Level:**
+  - Simplifies certificate management by decrypting SSL traffic at the load balancer.
+  - Prevents the need to manage SSL certificates on each web server.
+
+- **MySQL Master-Slave Cluster:**
+  - Primary Node (Master): Handles write operations and serves as the authoritative source for data.
+  - Replica Node (Slave): Replicates data from the primary node, used for read operations and provides fault tolerance.
+  - Data synchronization occurs from the master to the replica to maintain consistency.
+
+- **Monitoring:**
+  - Used to monitor system health, identify performance bottlenecks, and detect potential issues.
+  - Monitoring tools collect data such as server metrics, logs, and application performance.
+
+- **Monitoring Tool Data Collection:**
+  - Monitoring clients (Sumologic or other services) collect data from various sources, including server logs, metrics, and application logs.
+  - Data is sent to the monitoring service for analysis and visualization.
+
+- **Monitoring Web Server QPS:**
+  - To monitor web server QPS (Queries Per Second):
+    - Set up monitoring tools to collect and analyze web server metrics.
+    - Configure alerts for abnormal QPS values.
+    - Scale resources or optimize code based on monitoring insights.
+
+### Issues with the Infrastructure:
+
+1. **Terminating SSL at Load Balancer Level:**
+   - Issue: Increases the load on the load balancer, potentially affecting performance.
+   - Mitigation: Consider distributing SSL termination across multiple load balancers.
+
+2. **Single MySQL Server Capable of Accepting Writes:**
+   - Issue: Single point of failure for write operations.
+   - Mitigation: Implement a MySQL cluster with multiple servers capable of handling write operations.
+
+3. **Identical Components Across Servers:**
+   - Issue: Uniformity can lead to a SPOF. If one server experiences an issue, others might follow.
+   - Mitigation: Introduce diversity in server components and distribute services across different availability zones or regions.
+
+This infrastructure design aims to enhance security, performance, and fault tolerance while addressing potential issues.
