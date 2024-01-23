@@ -1,0 +1,51 @@
+Web Server 1 (Nginx):
+
+Role: Handles HTTP requests, serves static content.
+Additional Element Reasoning: Distributes the load and provides redundancy.
+Application Server:
+
+Role: Executes application logic, processes dynamic content.
+Additional Element Reasoning: Separates application processing from web serving for scalability and maintainability.
+Load Balancer (HAproxy):
+
+Role: Distributes incoming traffic among web servers.
+Additional Element Reasoning: Ensures high availability, evenly distributes the load.
+Load Balancer Algorithm: Round Robin - Distributes requests in a circular order.
+Active-Active Setup: Both web servers actively handle requests concurrently.
+Web Server 2 (Nginx):
+
+Role: Mirrors Web Server 1, provides redundancy and load-sharing.
+Additional Element Reasoning: Ensures high availability and fault tolerance.
+Application Files (Code Base):
+
+Role: Contains the application code, scripts, and resources.
+Additional Element Reasoning: Centralized storage for code, easier deployment.
+Database (MySQL):
+
+Role: Stores and manages application data.
+Additional Element Reasoning: Centralized data storage, supports structured queries.
+Primary-Replica Cluster: Utilizes a Master-Slave setup for data replication.
+Explanation of Specifics:
+Load Balancer Algorithm (Round Robin):
+
+Ensures an equal distribution of requests among the available web servers.
+Active-Active Setup vs. Active-Passive Setup:
+
+Active-Active: Both web servers are actively serving requests simultaneously, providing higher throughput.
+Active-Passive: One server is active while the other is on standby. In case of failure, the passive server becomes active.
+Database Primary-Replica (Master-Slave) Cluster:
+
+Primary Node: Handles write operations and serves as the authoritative source for data.
+Replica Node: Replicates data from the primary node, used for read operations, and provides fault tolerance.
+Data synchronization occurs from the primary to replica to maintain consistency.
+Issues with the Infrastructure:
+Single Point of Failure (SPOF):
+
+Single points of failure exist in the web servers, application server, load balancer, and database. Failure of any one component may disrupt the entire service.
+Security Issues:
+
+Lack of firewall: Increases vulnerability to unauthorized access and potential attacks.
+No HTTPS: Data transmission is not encrypted, risking the security and privacy of user information.
+No Monitoring:
+
+Absence of monitoring tools makes it challenging to identify and address performance issues, potential breaches, or system failures proactively.
