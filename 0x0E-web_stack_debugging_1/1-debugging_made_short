@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # configures a server to listening on port 80 of all servers active IPv4 IPs
 
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-service nginx restart
-pkill -o nginx
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
+kill "(pgrep 'nginx' | head -1)"
